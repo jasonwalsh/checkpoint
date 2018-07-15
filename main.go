@@ -40,7 +40,7 @@ func init() {
 func main() {
 	flag.Parse()
 	if product == "" {
-		fmt.Println("checkpoint: `product` cannot be empty")
+		fmt.Println("checkpoint: product cannot be empty")
 		os.Exit(1)
 	}
 	var found bool
@@ -50,7 +50,7 @@ func main() {
 		}
 	}
 	if !found {
-		fmt.Printf("checkpoint: `product` must be one of %s\n", strings.Join(products, ", "))
+		fmt.Printf("checkpoint: product must be one of %s\n", strings.Join(products, ", "))
 		os.Exit(1)
 	}
 	response, err := http.Get(fmt.Sprintf("%s/check/%s", Address, product))
