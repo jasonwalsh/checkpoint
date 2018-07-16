@@ -47,6 +47,7 @@ func main() {
 	for i := range products {
 		if product == products[i] {
 			found = true
+			break
 		}
 	}
 	if !found {
@@ -58,12 +59,12 @@ func main() {
 		log.Fatal(err)
 	}
 	defer response.Body.Close()
-	bytes, err := ioutil.ReadAll(response.Body)
+	b, err := ioutil.ReadAll(response.Body)
 	if err != nil {
 		log.Fatal(err)
 	}
 	var check Check
-	if err := json.Unmarshal(bytes, &check); err != nil {
+	if err := json.Unmarshal(b, &check); err != nil {
 		log.Fatal(err)
 	}
 	fmt.Println(check.CurrentVersion)
