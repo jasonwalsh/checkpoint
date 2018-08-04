@@ -40,7 +40,7 @@ func init() {
 func main() {
 	flag.Parse()
 	if product == "" {
-		fmt.Println("checkpoint: product cannot be empty")
+		flag.Usage()
 		os.Exit(1)
 	}
 	var found bool
