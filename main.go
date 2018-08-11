@@ -58,7 +58,6 @@ func main() {
 	if err != nil {
 		log.Fatal(err)
 	}
-	defer response.Body.Close()
 	b, err := ioutil.ReadAll(response.Body)
 	if err != nil {
 		log.Fatal(err)
@@ -68,5 +67,8 @@ func main() {
 		log.Fatal(err)
 	}
 	fmt.Println(check.CurrentVersion)
+	if err := response.Body.Close(); err != nil {
+		log.Fatal(err)
+	}
 	os.Exit(0)
 }
